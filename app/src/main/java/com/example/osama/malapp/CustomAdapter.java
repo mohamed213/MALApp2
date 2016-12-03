@@ -20,12 +20,16 @@ import java.util.List;
 public class CustomAdapter extends BaseAdapter {
     Context Rcontext;
     ArrayList<OneMovie> mylist = new ArrayList<>();
+    static final int REVIEW_LIST = 2;
+    static final int MOVIE_LIS = 1;
+    int listnum ;
 
-    public CustomAdapter(Context mContext, ArrayList<OneMovie> movies) {
+    public CustomAdapter (Context mContext, ArrayList<OneMovie> movies , int Whichlist) {
         Rcontext = mContext;
+        listnum = Whichlist;
         mylist = movies;
-    }
 
+    }
 
     @Override
     public int getCount() {
@@ -48,6 +52,7 @@ public class CustomAdapter extends BaseAdapter {
         holder mholder;
         row= convertView;
         final OneMovie mymovie = (OneMovie) getItem(position);
+        if (listnum == MOVIE_LIS){
         if (row == null){
             LayoutInflater layoutInflater = (LayoutInflater) Rcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(R.layout.list_item,parent,false);
@@ -58,14 +63,34 @@ public class CustomAdapter extends BaseAdapter {
            mholder= (holder) row.getTag();
         }
         
-        Picasso.with(Rcontext).load("http://image.tmdb.org/t/p/w342"+ mymovie.getMoviethumbnail()).into(mholder.Iv);
+        Picasso.with(Rcontext).load("http://image.tmdb.org/t/p/w342"+ mymovie.getMoviethumbnail()).into(mholder.Iv);}
 
+        else if (listnum == REVIEW_LIST){
+            if (row == null) {
+                LayoutInflater layoutInflater = (LayoutInflater) Rcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                row = layoutInflater.inflate(R.layout.rev_item, parent, false);
+                mholder= new holder(row);
+                row.setTag(mholder);
+            }else {
+                mholder= (holder) row.getTag();
+            }
+
+            mholder.Name.setText(mymovie.getName());
+            mholder.rev.setText(mymovie.getReview());
+
+
+        }
         return row;
     }
     public class holder {
         ImageView Iv;
+        TextView Name;
+        TextView rev;
         public holder (View view) {
-         Iv = (ImageView)view.findViewById(R.id.movie_image);
+            Iv = (ImageView)view.findViewById(R.id.movie_image);
+            Name = (TextView)view.findViewById(R.id.name);
+            rev = (TextView)view.findViewById(R.id.review);
+
         }
         }
 }

@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-       tools:context="com.example.osama.malapp.Main2Activity"
-    tools:showIn="@layout/activity_main2">
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="title"
+            android:layout_marginTop="50dp"
+            android:textSize="40sp"
+            android:id="@+id/title"
+            />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="20dp"
         android:src="@drawable/ic_launcher"
         android:id="@+id/thumb"
-        android:gravity="center"/>
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,32 +38,55 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="title"
-            android:textSize="20sp"
-            android:layout_marginTop="120dp"
-            android:id="@+id/title"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="date"
-            android:layout_gravity="center"
             android:textSize="20sp"
+            android:layout_gravity="center"
             android:id="@+id/date"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="rating"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:id="@+id/rating"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/favourite"
+            android:text="Add to my favourite"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/deletefav"
+            android:text="Delete from favourite"
+            />
+    </LinearLayout>
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="overview"
             android:layout_gravity="center"
             android:textSize="20sp"
             android:id="@+id/overview"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="rating"
             android:layout_gravity="center"
-            android:textSize="20sp"
-            android:id="@+id/rating"/>
+            android:id="@+id/trailer"
+            android:background="@color/colorAccent"
+            android:text="show trailer"
+            />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/reviewlist"
+            android:nestedScrollingEnabled="true"></ListView>
     </LinearLayout>
+</ScrollView>
 
-</LinearLayout>

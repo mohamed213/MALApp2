@@ -9,24 +9,52 @@ public class OneMovie implements Parcelable {
     private String Moviename;
     private String Moviethumbnail;
     private String Movieoverviw;
-    private int MovieRating;
+    private String MovieRating;
     private String Mviedate;
+    private String key;
+    private String name;
+    private String review;
+    private int Mid;
 
-    public OneMovie(String moviename, String moviethumbnail, String movieoverviw, int movieRating, String mviedate) {
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public OneMovie(String moviekey,String Uname, String Ureview) {
+        key = moviekey;
+        name = Uname;
+        review = Ureview;
+    }
+    public OneMovie(int id ,String moviename, String moviethumbnail, String movieoverviw, String movieRating, String mviedate) {
+        Mid = id;
         Moviename = moviename;
         Moviethumbnail = moviethumbnail;
         Movieoverviw = movieoverviw;
         MovieRating = movieRating;
         Mviedate = mviedate;
     }
-    protected OneMovie (Parcel in) {
-        Moviename = in.readString();
-        Moviethumbnail = in.readString();
-        Movieoverviw = in.readString();
-        Mviedate = in.readString();
-        MovieRating = in.readInt();
 
+    public String getKey() {
+        return key;
     }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
 
     public String getMoviename() {
         return Moviename;
@@ -35,12 +63,19 @@ public class OneMovie implements Parcelable {
     public void setMoviename(String moviename) {
         Moviename = moviename;
     }
+    public int getMid() {
+        return Mid;
+    }
 
-    public int getMovieRating() {
+    public void setMid(int id) {
+        Mid = id;
+    }
+
+    public String getMovieRating() {
         return MovieRating;
     }
 
-    public void setMovieRating(int movieRating) {
+    public void setMovieRating(String movieRating) {
         MovieRating = movieRating;
     }
 
@@ -79,20 +114,9 @@ public class OneMovie implements Parcelable {
         dest.writeString(Moviethumbnail);
         dest.writeString(Movieoverviw);
         dest.writeString(Mviedate);
-        dest.writeInt(MovieRating);
 
     }
-    public static final Parcelable.Creator<OneMovie> CREATOR = new Parcelable.Creator<OneMovie>() {
-        @Override
-        public OneMovie createFromParcel(Parcel in) {
-            return new OneMovie(in);
-        }
 
-        @Override
-        public OneMovie[] newArray(int size) {
-            return new OneMovie[size];
-        }
-    };
 
 
 }
